@@ -1,14 +1,16 @@
 import Head from "next/head";
-import { Button, Box } from "@mui/material";
-import { Hero, Navbar } from "@/components";
+import { Content, Hero, Siderbar } from "@/components";
 import Layout from "@/layout/layout";
+import { Box } from "@mui/material";
 
-const IndexPage = () => {
-  return (
-    <Layout>
-      <Hero />
-    </Layout>
-  );
-};
+const IndexPage = () => (
+  <Layout>
+    <Hero />
+    <Box sx={{ display: "flex", gap: '20px', padding: "20px" }}>
+      <Siderbar />
+      <Content />
+    </Box>
+  </Layout>
+);
 
 export default IndexPage;

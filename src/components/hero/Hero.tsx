@@ -6,7 +6,7 @@ import { format } from "date-fns";
 
 const Hero = () => {
   return (
-    <Box width={"100%"} height={"70vh"} sx={{ backgroundColor: "red" }}>
+    <Box width={"100%"} height={"70vh"} >
       <Carousel
         responsive={{
           desktop: {
