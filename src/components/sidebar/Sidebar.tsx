@@ -4,8 +4,9 @@ import { format } from "date-fns";
 import Image from "next/image";
 
 import { Fragment } from "react";
+import { SidebarProps } from "./sidebar.props";
 
-const Sidebar = () => {
+const Sidebar = ({sidebar, category}: SidebarProps) => {
   return (
     <>
     <Box width={{xs:'100%', md: '30%'}}>
@@ -16,17 +17,18 @@ const Sidebar = () => {
           <Box
             sx={{ display: "flex", marginTop: "10px", flexDirection: "column" }}
           >
-            {data.map((item) => (
+            {sidebar.map((item) => (
               <Box
                 key={item.title}
                 marginTop={'20px'}
               >
                 <Box sx={{ display: "flex", alignItems: "center", gap: "20px" }}>
                   <Image
-                    alt={item.image}
-                    src={item.image}
+                    alt={item.id}
+                    src={item.image.url}
                     width={100}
                     height={100}
+                    style={{objectFit: 'cover', borderRadius:'8px'}}
                   />
           
 
@@ -42,7 +44,7 @@ const Sidebar = () => {
                    
                   }}
                 >
-                  <Avatar alt={item.author.name} src={item.author.image} />
+                  <Avatar alt={item.author.name} src={item.author.avatar.url} />
                   <Box>
                     <Typography variant="body2">{item.author.name}</Typography>
                     <Box sx={{opacity:'.5'}}>{format(new Date(), "dd MMM, yyyy")}</Box>
@@ -65,8 +67,8 @@ const Sidebar = () => {
           <Box
             sx={{ display: "flex", flexDirection: "column", marginTop: "20px" }}
           >
-            {NavItems.map((nav) => (
-              <Fragment key={nav.route}>
+            {category.map((nav) => (
+              <Fragment key={nav.slug}>
                 <Button
                   fullWidth
                   sx={{ justifyContent: "flex-start", height: "50px" }}
