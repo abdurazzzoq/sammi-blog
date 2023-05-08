@@ -5,8 +5,11 @@ import Image from "next/image";
 
 import { Fragment } from "react";
 import { SidebarProps } from "./sidebar.props";
+import { useRouter } from "next/router";
 
 const Sidebar = ({sidebar, category}: SidebarProps) => {
+
+  const router = useRouter()
   return (
     <>
     <Box width={{xs:'100%', md: '30%'}}>
@@ -21,6 +24,8 @@ const Sidebar = ({sidebar, category}: SidebarProps) => {
               <Box
                 key={item.title}
                 marginTop={'20px'}
+                sx={{cursor:'pointer'}}
+                onClick={()=> router.push(`/blog/${item.slug}`)}
               >
                 <Box sx={{ display: "flex", alignItems: "center", gap: "20px" }}>
                   <Image

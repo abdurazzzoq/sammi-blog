@@ -4,9 +4,6 @@ export interface BlogsType {
   slug: string;
   title: string;
   createdAt: Date;
-  image: {
-    url: string;
-  };
   author: {
     name: string;
     avatar: {
@@ -19,6 +16,10 @@ export interface BlogsType {
   };
   description:{
     text: string;
+    html: string;
   }
+  image:{
+    url: string;
+   }
 }
 

@@ -5,8 +5,10 @@ import Image from "next/image";
 import { format } from "date-fns";
 import { HeroProps } from "./hero.props";
 import { calculateEstimateTimeToRead } from "@/helpers/time.format";
+import { useRouter } from "next/router";
 
 const Hero = ({ blogs }: HeroProps) => {
+  const router = useRouter()
   return (
     <Box width={"100%"} height={"70vh"}>
       <Carousel
@@ -18,7 +20,7 @@ const Hero = ({ blogs }: HeroProps) => {
         }}
       >
         {blogs.map((item) => (
-          <Box key={item.id}>
+          <Box sx={{cursor:'pointer'}} onClick={()=>router.push(`/blog/${item.slug}`)} key={item.id}>
             <Box sx={{ position: "relative", width: "100%", height: "70vh" }}>
               <Image
                 src={item.image.url}
