@@ -17,6 +17,7 @@ import { useState } from "react";
 import { NavItems } from "@/config/constants";
 import CloseIcon from '@mui/icons-material/Close';
 import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
+import { useRouter } from "next/router";
 
 interface Props {
   window?: () => Window;
@@ -34,9 +35,10 @@ const Navbar = ({ window }: Props) => {
     window !== undefined ? () => window().document.body : undefined;
 
   const drawer = (
+    
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Box sx={{ display: "flex", justifyContent: "space-between",alignItems:'center' }}>
-        <Box sx={{display: 'flex', alignItems:'center', gap:'5px'}}>
+        <Box onClick={()=>router.push('/')} sx={{display: 'flex', alignItems:'center', gap:'5px', cursor:'pointer'}}>
           <CatchingPokemonIcon />
           <Typography>
             Sammi
@@ -57,10 +59,10 @@ const Navbar = ({ window }: Props) => {
       </List>
     </Box>
   );
-
+const router = useRouter()
   return (
     <Box height={"10vh"} sx={{ display: "flex" }}>
-      <AppBar sx={{height:'10vh', backgroundColor:'#141414'}} component="nav">
+      <AppBar  sx={{height:'10vh', backgroundColor:'#141414'}} component="nav">
         <Toolbar>
           <IconButton
             color="inherit"
@@ -72,7 +74,7 @@ const Navbar = ({ window }: Props) => {
             <MenuIcon />
           </IconButton>
 
-          <Box sx={{ alignItems:'center', gap:'5px',  flexGrow: 1, display: { xs: "none", sm: "flex" }}}>
+          <Box onClick={()=>router.push('/')} sx={{ cursor:'pointer', alignItems:'center', gap:'5px',  flexGrow: 1, display: { xs: "none", sm: "flex" }}}>
           <CatchingPokemonIcon />
           <Typography variant="h6" component='div'>
             Sammi
