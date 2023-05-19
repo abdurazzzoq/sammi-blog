@@ -7,12 +7,14 @@ import { BlogService } from "@/services/blog.servic";
 import { GetServerSideProps } from "next";
 import { BlogsType } from "@/interfaces/blogs.interface";
 import { GetCategories } from "@/interfaces/categories.interface";
+import SEO from "@/layout/seo/seo";
 
 
 const IndexPage = ({ blogs, sidebar, category }: HomeProps) => {
   console.log(blogs);
 
   return (
+    <SEO>
     <Layout>
       <Hero blogs={blogs.slice(0, 3)}/>
       <Box
@@ -27,6 +29,8 @@ const IndexPage = ({ blogs, sidebar, category }: HomeProps) => {
         <Content blogs={blogs} />
       </Box>
     </Layout>
+
+    </SEO>
   );
 };
 

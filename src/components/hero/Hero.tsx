@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 const Hero = ({ blogs }: HeroProps) => {
   const router = useRouter()
   return (
-    <Box width={"100%"} height={"70vh"}>
+    <Box mt={'5vh'} width={"100%"} height={"70vh"}>
       <Carousel
         responsive={{
           desktop: {

@@ -26,6 +26,7 @@ const drawerWidth = 240;
 
 const Navbar = ({ window }: Props) => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const router = useRouter();
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -50,7 +51,7 @@ const Navbar = ({ window }: Props) => {
       <Divider />
       <List>
         {NavItems.map((item) => (
-          <ListItem key={item.route} disablePadding>
+          <ListItem key={item.route} onClick={()=> router.push(item.route)} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
               <ListItemText primary={item.label} />
             </ListItemButton>
@@ -59,10 +60,9 @@ const Navbar = ({ window }: Props) => {
       </List>
     </Box>
   );
-const router = useRouter()
   return (
-    <Box height={"10vh"} sx={{ display: "flex" }}>
-      <AppBar  sx={{height:'10vh', backgroundColor:'#141414'}} component="nav">
+    <Box sx={{ display: "flex" }}>
+      <AppBar  sx={{ backgroundColor:'#141414'}} component="nav">
         <Toolbar>
           <IconButton
             color="inherit"
@@ -83,7 +83,7 @@ const router = useRouter()
 
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {NavItems.map((item) => (
-              <Button key={item.route} sx={{ color: "#fff" }}>
+              <Button onClick={()=> router.push(item.route)} key={item.route} sx={{ color: "#fff" }}>
                 {item.label}
               </Button>
             ))}
